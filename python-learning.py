@@ -17,7 +17,7 @@ defUsers.process()
 
 @app.teardown_appcontext
 def shutdown_session(exception=None):
-    db_session.shutdown()
+    db_session.remove()
 
 @app.route('/')
 def hello_world():
