@@ -23,7 +23,7 @@ def login():
     return "You're logging in..."
 
 
-@app.route('/register/', methods=('GET', 'POST'))
+@app.route('/signup/', methods=('GET', 'POST'))
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
