@@ -12,9 +12,12 @@ print('initialized database.')
 
 from app.utils import UserFile
 
+# process default user file to populate database (has plaintext passwords: only for testing!)
 defUsers = UserFile("defaultUsers.xml")
 defUsers.process()
 
+
+# make sure to teardown any database-connections at the end of each request
 @app.teardown_appcontext
 def shutdown_session(exception=None):
     db_session.remove()

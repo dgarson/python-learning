@@ -1,0 +1,6 @@
+flask=0.9
+flask-wtf=0.9.5
+Flask-Security=1.7.4
+Flask-Mail=0.7.3
+WTForms=1.0.5
+Flask-SQLAlchemy=1.0
