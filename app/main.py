@@ -7,10 +7,6 @@ from app.models import Account as User
 
 app = Flask(__name__)
 
-@app.route('/')
-def index():
-    return render_template('index.html')
-
 @app.route('/login/', methods=('GET', 'POST'))
 def login():
     form = LoginForm()

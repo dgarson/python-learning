@@ -1,5 +1,5 @@
 # flask_tracking/users/forms.py
-from flask.ext.wtf import Form
+from flask_wtf import Form
 from sqlalchemy.orm.exc import MultipleResultsFound, NoResultFound
 from wtforms import fields
 from wtforms.validators import Email, InputRequired, ValidationError

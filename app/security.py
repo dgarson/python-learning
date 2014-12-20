@@ -17,7 +17,7 @@ users = Blueprint('users', __name__)
 def load_user(userid):
     return Account.query.get(userid)
 
-@app.route("/login", methods=["GET", "POST"])
+@app.route("/login/", methods=["GET", "POST"])
 def login():
     form = LoginForm()
     if form.validate_on_submit():
