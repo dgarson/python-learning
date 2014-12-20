@@ -20,8 +20,8 @@ def shutdown_session(exception=None):
     db_session.remove()
 
 @app.route('/')
-def hello_world():
-    return 'Hello World!'
+def index():
+    return render_template('index.html')
 
 if __name__ == '__main__':
     # app.debug = True
