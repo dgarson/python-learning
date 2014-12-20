@@ -1,7 +1,6 @@
 from random import SystemRandom
-from hmac import new, compare_digest
-from crypt import METHOD_SHA512, METHOD_CRYPT, mksalt, crypt
-from hashlib import pbkdf2_hmac
+from hmac import compare_digest
+from crypt import METHOD_SHA512, mksalt, crypt
 from sqlalchemy import Column, String, Integer, VARCHAR, Boolean, Table, ForeignKey, LargeBinary
 from sqlalchemy.orm import relationship, mapper
 from sqlalchemy.ext.hybrid import hybrid_property
