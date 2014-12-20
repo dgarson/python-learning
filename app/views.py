@@ -45,3 +45,4 @@ def logout():
     # session->User connection for this session.
     logout_user()
     return redirect(url_for('tracking.index'))
+
