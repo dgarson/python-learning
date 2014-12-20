@@ -1,12 +1,19 @@
 from flask import Flask
-from app.database import db_session, init_db
 
-app = Flask('key_binding_app')
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/key_bindings.db'
-print('configured Flask app')
+databaseUri = "sqlite:////tmp/key_bindings.db"
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = databaseUri
+print('configured Flask app with databaseUri', app.config['SQLALCHEMY_DATABASE_URI'])
+
+from app.database import db_session, init_db
 
 init_db()
 print('initialized database.')
+
+from app.utils import UserFile
+
+defUsers = UserFile("defaultUsers.xml")
+defUsers.process()
 
 @app.teardown_appcontext
 def shutdown_session(exception=None):
@@ -17,4 +24,5 @@ def hello_world():
     return 'Hello World!'
 
 if __name__ == '__main__':
+    # app.debug = True
     app.run()
