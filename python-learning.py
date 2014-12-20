@@ -16,7 +16,6 @@ from app.utils import UserFile
 defUsers = UserFile("defaultUsers.xml")
 defUsers.process()
 
-
 # make sure to teardown any database-connections at the end of each request
 @app.teardown_appcontext
 def shutdown_session(exception=None):
@@ -28,4 +27,5 @@ def hello_world():
 
 if __name__ == '__main__':
     # app.debug = True
+    from app.security import *
     app.run()
