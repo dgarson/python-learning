@@ -4,7 +4,7 @@ from crypt import METHOD_SHA512, mksalt, crypt
 from sqlalchemy import Column, String, Integer, VARCHAR, Boolean, Table, ForeignKey, LargeBinary
 from sqlalchemy.orm import relationship, mapper
 from sqlalchemy.ext.hybrid import hybrid_property
-from flask.ext.login import UserMixin
+from flask_login import UserMixin
 from app.database import Base, db, metadata, engine
 
 randomizer = SystemRandom()
