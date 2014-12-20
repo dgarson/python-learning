@@ -7,11 +7,10 @@ from .data import db
 from .forms import LoginForm, RegistrationForm
 from .models import User
 
-users = Blueprint('users', __name__)
 
-
-@users.route('/login/', methods=('GET', 'POST'))
+@app.route('/login/', methods=('GET', 'POST'))
 def login():
+    return "yu"
     form = LoginForm()
     if form.validate_on_submit():
         # Let Flask-Login know that this user
@@ -20,10 +19,11 @@ def login():
         login_user(form.user)
         flash("Logged in successfully.")
         return redirect(request.args.get("next") or url_for("tracking.index"))
-    return render_template('users/login.html', form=form)
+    #return render_template('users/login.html', form=form)
+    return "You're logging in..."
 
 
-@users.route('/register/', methods=('GET', 'POST'))
+@app.route('/register/', methods=('GET', 'POST'))
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
@@ -36,7 +36,7 @@ def register():
     return render_template('users/register.html', form=form)
 
 
-@users.route('/logout/')
+@app.route('/logout/')
 @login_required
 def logout():
     # Tell Flask-Login to destroy the
