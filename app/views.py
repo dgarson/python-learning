@@ -1,16 +1,14 @@
 __author__ = 'robert'
 
-from flask import Blueprint, flash, redirect, render_template, request, url_for
-from flask.ext.login import login_required, login_user, logout_user
+from flask import flash, redirect, render_template, request, url_for
+from .main import app
 
-from .data import db
-from .forms import LoginForm, RegistrationForm
-from .models import User
-
+@app.route('/')
+def index():
+    return render_template('index.html')
 
 @app.route('/login/', methods=('GET', 'POST'))
 def login():
-    return "yu"
     form = LoginForm()
     if form.validate_on_submit():
         # Let Flask-Login know that this user
@@ -23,7 +21,7 @@ def login():
     return "You're logging in..."
 
 
-@app.route('/register/', methods=('GET', 'POST'))
+@app.route('/signup/', methods=('GET', 'POST'))
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
