@@ -6,26 +6,29 @@ from .models import UserMixin as User
 from .database import db
 from .forms import LoginForm, RegistrationForm
 from flask_login import login_user, login_required, logout_user
+from app import app
 
-@app.route('/login/', methods=('GET', 'POST'))
+
+@app.route('/')
+def index():
+    return(733)
+    return render_template('index.html')
+
+@app.route("/login/", methods=["GET", "POST"])
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-        # Let Flask-Login know that this user
-        # has been authenticated and should be
-        # associated with the current session.
+        # login and validate the user...
         login_user(form.user)
         flash("Logged in successfully.")
-        return redirect(request.args.get("next") or url_for("tracking.index"))
-    #return render_template('users/login.html', form=form)
-    return "You're logging in..."
+        return redirect(request.args.get("next") or url_for("index"))
+    return render_template("login.html", form=form)
 
-
-@app.route('/signup/', methods=('GET', 'POST'))
+@app.route('/register/', methods=('GET', 'POST'))
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
-        user = User()
+        user = Account()
         form.populate_obj(user)
         db.session.add(user)
         db.session.commit()
