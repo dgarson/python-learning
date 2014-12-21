@@ -1,4 +1,4 @@
-from flask.ext.login import LoginManager, login_user, login_required, logout_user
+from flask_login import LoginManager, login_user, login_required, logout_user
 from flask import Blueprint, render_template, redirect, url_for, flash, request
 from app import app
 from app.models import Account

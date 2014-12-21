@@ -5,8 +5,6 @@ from flask_login import login_required, login_user, logout_user
 from app.forms import LoginForm, RegistrationForm
 from app.models import Account as User
 
-app = Flask(__name__)
-
 @app.route('/login/', methods=('GET', 'POST'))
 def login():
     form = LoginForm()
@@ -42,6 +40,4 @@ def logout():
     logout_user()
     return redirect(url_for('tracking.index'))
 
-
-app.run()
 
