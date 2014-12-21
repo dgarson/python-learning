@@ -8,7 +8,7 @@ from app.forms import LoginForm, RegistrationForm
 __author__ = 'dgarson'
 
 login_manager = LoginManager()
-login_manager.login_view = 'users.login'
+# login_manager.login_view = 'users.login'
 login_manager.init_app(app)
 
 users = Blueprint('users', __name__)
@@ -19,15 +19,23 @@ def load_user(userid):
 
 @app.route("/login/", methods=["GET", "POST"])
 def login():
+    print("login")
     form = LoginForm()
+    print("form created")
     if form.validate_on_submit():
-        # login and validate the user...
+        login("validated - logging in user")
+        # Let Flask-Login know that this user
+        # has been authenticated and should be
+        # associated with the current session.
         login_user(form.user)
         flash("Logged in successfully.")
-        return redirect(request.args.get("next") or url_for("index"))
-    return render_template("login.html", form=form)
+        print("Login validation succeeded")
+        return redirect(request.args.get("next") or url_for("tracking.index"))
+    #return render_template('users/login.html', form=form)
+    print("Login validation failed")
+    return "You're logging in..."
 
-@users.route('/register/', methods=('GET', 'POST'))
+@users.route('/register/', methods=['GET', 'POST'])
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
