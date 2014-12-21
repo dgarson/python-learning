@@ -21,11 +21,11 @@ defUsers.process()
 def shutdown_session(exception=None):
     db_session.remove()
 
-@app.route('/')
-def index():
-    return render_template('index.html')
+
 
 if __name__ == '__main__':
     # app.debug = True
     from app.security import *
     app.run()
+    # set the secret key.  keep this really secret:
+    app.secret_key = b'\xff\x02\xf5;\xe9\x00+;\xc9\xde\x08Re\xfe\x90\xb8{\x1a!\x0e\xe6EH\xee'
