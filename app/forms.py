@@ -9,6 +9,7 @@ from app.models import Account
 class LoginForm(Form):
     email = StringField(validators=[InputRequired(), Email()])
     password = StringField(validators=[InputRequired()])
+    error = ValidationError()
 
     # WTForms supports "inline" validators
     # which are methods of our `Form` subclass

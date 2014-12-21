@@ -31,9 +31,7 @@ def login():
         flash("Logged in successfully.")
         print("Login validation succeeded")
         return redirect(request.args.get("next") or url_for("tracking.index"))
-    #return render_template('users/login.html', form=form)
-    print("Login validation failed")
-    return "You're logging in..."
+    return render_template('login.html', form=form, error=None)
 
 @users.route('/register/', methods=['GET', 'POST'])
 def register():
@@ -45,7 +43,7 @@ def register():
         db.session.commit()
         login_user(user)
         return redirect(url_for('tracking.index'))
-    return render_template('users/register.html', form=form)
+    return render_template('register.html', form=form)
 
 
 @users.route('/logout/')

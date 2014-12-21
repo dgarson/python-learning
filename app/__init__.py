@@ -2,9 +2,9 @@ from flask import Flask
 
 secretKey = b'\xff\x02\xf5;\xe9\x00+;\xc9\xde\x08Re\xfe\x90\xb8{\x1a!\x0e\xe6EH\xee'
 databaseUri = "sqlite:////tmp/key_bindings.db"
-app = Flask(__name__, template_folder="app/templates")
+app = Flask(__name__)
 app.config['SECRET_KEY'] = secretKey
-# app.config['DEBUG'] = True
+app.config['DEBUG'] = True
 app.config['PROPAGATE_EXCEPTIONS'] = True
 app.config['PRESERVE_CONTEXT_ON_EXCEPTION'] = True
 app.config['SQLALCHEMY_DATABASE_URI'] = databaseUri
